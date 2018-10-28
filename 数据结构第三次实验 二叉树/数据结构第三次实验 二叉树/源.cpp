@@ -36,11 +36,11 @@ tTree::tTree()
 {
 	cin >> str;
 	top = 0;
-	base = (node *)malloc(sizeof(node)*(2*str.length()-1));//ÈôÓĞ¸öÒ¶½ÚµãÔò×Ü½ÚµãÊıÊıÎª2n-1£¬Êµ¼ÊÉÏ×ÖÄ¸»áÓĞÖØ¸´£¬ÓÃ²»ÁËÕâÃ´¶à¿Õ¼ä£¬´Ë´¦Ö»ÊÇÎªÁË·½±ã
+	base = (node *)malloc(sizeof(node)*(2*str.length()-1));//è‹¥æœ‰ä¸ªå¶èŠ‚ç‚¹åˆ™æ€»èŠ‚ç‚¹æ•°æ•°ä¸º2n-1ï¼Œå®é™…ä¸Šå­—æ¯ä¼šæœ‰é‡å¤ï¼Œç”¨ä¸äº†è¿™ä¹ˆå¤šç©ºé—´ï¼Œæ­¤å¤„åªæ˜¯ä¸ºäº†æ–¹ä¾¿
 	for (int i = 0; i < str.length(); i++) {
 		int temp = flag.find(str[i]);         
-		if (temp>=0) {                 //¸Ã×ÖÄ¸ÒÑ¾­Ìí¼Ó¹ı
-			base[temp].w++;            //È¨Öµ¼Ó1
+		if (temp>=0) {                 //è¯¥å­—æ¯å·²ç»æ·»åŠ è¿‡
+			base[temp].w++;            //æƒå€¼åŠ 1
 		}
 		else {
 			base[top].c = str[i];
@@ -48,7 +48,7 @@ tTree::tTree()
 			base[top].leftChild = NULL;
 			base[top].flag = false;
 			base[top].rightChild = NULL;
-			flag.push_back(str[i]);   //°Ñ×ÖÄ¸Ìí¼Óµ½string flagÖĞ
+			flag.push_back(str[i]);   //æŠŠå­—æ¯æ·»åŠ åˆ°string flagä¸­
 			top++;
 		}
 	}
@@ -62,7 +62,7 @@ tTree::~tTree()
 
 
 void tTree::CreateTree() {
-	node * temp1=NULL;  //temp1 temp2ÓÃÓÚÖ¸ÏòÈ¨Öµ×îĞ¡µÄÁ½¸ö½Úµã
+	node * temp1=NULL;  //temp1 temp2ç”¨äºæŒ‡å‘æƒå€¼æœ€å°çš„ä¸¤ä¸ªèŠ‚ç‚¹
 	node * temp2=NULL;
 	for (int i = 0; i < flag.length() - 1; i++) {
 		Find(temp1, temp2);
@@ -80,7 +80,7 @@ void tTree::CreateTree() {
 }
 
 
-void tTree::Find(node * &n1, node * &n2)   //ÕÒµ½È¨Öµ×îĞ¡µÄÁ½¸öµã
+void tTree::Find(node * &n1, node * &n2)   //æ‰¾åˆ°æƒå€¼æœ€å°çš„ä¸¤ä¸ªç‚¹
 {
 	bool flag = true;
 	for (int i=0; i < top; i++) {
@@ -94,7 +94,7 @@ void tTree::Find(node * &n1, node * &n2)   //ÕÒµ½È¨Öµ×îĞ¡µÄÁ½¸öµã
 			n1 = &base[i];
 		}
 	}
-	n1->flag = true;                     //½«ÕÒµ½µÄ½Úµã±ê¼Ç³ÉÒÑ²ÎÓë¹¹Ôì¹ş·òÂüÊ÷
+	n1->flag = true;                     //å°†æ‰¾åˆ°çš„èŠ‚ç‚¹æ ‡è®°æˆå·²å‚ä¸æ„é€ å“ˆå¤«æ›¼æ ‘
 	for (int i = 0; i < top; i++) {
 		if (!base[i].flag) {
 			n2 = &base[i];
@@ -135,6 +135,7 @@ void tTree::toCode(node * n,string & str)
 		o.close();
 		return;
 	}
+	str.pop()_back;
 }
 
 
@@ -156,7 +157,7 @@ int main() {
 	while (cin >> code)
 	{
 		int i = str.find(code);
-		//ÅĞ¶ÏÊäÈëµÄ±àÂëÊÇ·ñÊÇ¶ÔÓ¦Ò»¸ö×ÖÄ¸
+		//åˆ¤æ–­è¾“å…¥çš„ç¼–ç æ˜¯å¦æ˜¯å¯¹åº”ä¸€ä¸ªå­—æ¯
 		if (i == string::npos || str[i+code.length()]<'a' || str[i+code.length()]>'z' || (i > 0 && (str[i - 1]<'a' || str[i - 1]>'z'))) {
 			cout << "code error" << endl;
 			cout << "please input code:";
