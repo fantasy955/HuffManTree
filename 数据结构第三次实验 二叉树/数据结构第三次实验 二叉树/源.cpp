@@ -135,7 +135,7 @@ void tTree::toCode(node * n,string & str)
 		o.close();
 		return;
 	}
-	str.pop()_back;
+	str.pop()_back;  //注意这里还需要pop
 }
 
 
