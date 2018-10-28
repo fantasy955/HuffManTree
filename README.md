@@ -1,1 +1,1 @@
-# HuffManTress
+# HuffManTree
